@@ -1,0 +1,387 @@
+ alpha = [2 3 4];
+ apha1 = [2 2 10];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1))/...
+ betaConst;
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1))/...
+ betaConst1;
+ P = (.2*F) +(.8*F1):
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+ xlabel('x1'); ylabel('x2'); zlabel('f(x1,x2,1-x1-x2)');
+ view(-160,40);
+ figure, surf(X1,X2,X3,P,'EdgeColor','none');
+ xlabel('x1'); ylabel('x2'); zlabel('x3');
+ view(-160,40);
+
+
+>>  alpha = [2 3 4];
+ alpha1 = [2 2 10];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1))/...
+ betaConst;
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1))/...
+ betaConst1;
+
+ P = (.2*F) +(.8*F1);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+ xlabel('x1'); ylabel('x2'); zlabel('f(x1,x2,1-x1-x2)');
+ view(-160,40);
+ figure, surf(X1,X2,X3,P,'EdgeColor','none');
+ xlabel('x1'); ylabel('x2'); zlabel('x3');
+ view(-160,40);
+
+
+3D Dirichlet Plots Dirichlet
+
+>>  alpha = [20 30 5];
+ alpha1 = [10 40 4];
+ alpha2 = [30 20 5];
+
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ betaConst2 = exp(sum(gammaln(alpha2))-gammaln(sum(alpha2)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1))/...
+ betaConst;
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1))/...
+ betaConst1;
+ F2 = (X1.^(alpha2(1)-1) .* X2.^(alpha2(2)-1) .* X3.^(alpha2(3)-1))/...
+ betaConst2; 
+ P = (.33*F) +(.33*F1) +(.33*F2);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+
+
+
+3D Dirichlet Plots Scaled Dirichlet
+
+synthetic 5
+
+ alpha = [10 2 40];
+ alpha1 = [30 30 32];
+ alpha2 = [15 19 6];
+ alpha3 = [30 10 55];
+ alpha4 = [2 40 10];
+ beta = [1 1 1];
+ beta1 = [1 1 1];
+ beta2 = [1 1 1];
+ beta3 = [1 1 1];
+ beta4 = [1 1 1];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ betaConst2 = exp(sum(gammaln(alpha2))-gammaln(sum(alpha2)));
+ betaConst3 = exp(sum(gammaln(alpha3))-gammaln(sum(alpha3)));
+ betaConst4 = exp(sum(gammaln(alpha4))-gammaln(sum(alpha4)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1));
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1));
+ F2 = (X1.^(alpha2(1)-1) .* X2.^(alpha2(2)-1) .* X3.^(alpha2(3)-1));
+ F3 = (X1.^(alpha3(1)-1) .* X2.^(alpha3(2)-1) .* X3.^(alpha3(3)-1));
+ F4 = (X1.^(alpha4(1)-1) .* X2.^(alpha4(2)-1) .* X3.^(alpha4(3)-1));
+
+ G = (beta(1).^alpha(1)) .*(beta(2).^alpha(2)) .*(beta(3).^alpha(3));
+ G1 = (beta1(1).^alpha1(1)) .*(beta1(2).^alpha1(2)) .*(beta1(3).^alpha1(3));
+ G2 = (beta2(1).^alpha2(1)) .*(beta2(2).^alpha2(2)) .*(beta2(3).^alpha2(3));
+ G3 = (beta3(1).^alpha3(1)) .*(beta3(2).^alpha3(2)) .*(beta3(3).^alpha3(3));
+ G4 = (beta4(1).^alpha4(1)) .*(beta4(2).^alpha4(2)) .*(beta4(3).^alpha4(3));
+
+ H = ((beta(1).*X1)+(beta(2).*X2)+(beta(3).*X3)).^sum(alpha);
+ H1 = ((beta1(1).*X1)+(beta1(2).*X2)+(beta1(3).*X3)).^sum(alpha1);
+ H2 = ((beta2(1).*X1)+(beta2(2).*X2)+(beta2(3).*X3)).^sum(alpha2);
+ H3 = ((beta3(1).*X1)+(beta3(2).*X2)+(beta3(3).*X3)).^sum(alpha3);
+ H4 = ((beta4(1).*X1)+(beta4(2).*X2)+(beta4(3).*X3)).^sum(alpha4);
+
+ K = ((F.*G)./H)/betaConst;
+ K1 = ((F1.*G1)./H1)/betaConst1;
+ K2 = ((F2.*G2)./H2)/betaConst2;
+ K3 = ((F3.*G3)./H3)/betaConst3;
+ K4 = ((F4.*G4)./H4)/betaConst4;
+
+
+ P = (.166*K) +(.25*K1) +(.25*K2)+(.166*K3)+(.166*K4);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+
+
+
+
+synthetic 4
+
+ alpha = [10 2 40];
+ alpha1 = [30 30 32];
+ alpha2 = [15 19 6];
+ alpha3 = [30 10 55];
+ %alpha4 = [2 40 10];
+ beta = [1 1 1];
+ beta1 = [1 1 1];
+ beta2 = [1 1 1];
+ beta3 = [1 1 1];
+ %beta4 = [1 1 1];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ betaConst2 = exp(sum(gammaln(alpha2))-gammaln(sum(alpha2)));
+ betaConst3 = exp(sum(gammaln(alpha3))-gammaln(sum(alpha3)));
+ %betaConst4 = exp(sum(gammaln(alpha4))-gammaln(sum(alpha4)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1));
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1));
+ F2 = (X1.^(alpha2(1)-1) .* X2.^(alpha2(2)-1) .* X3.^(alpha2(3)-1));
+ F3 = (X1.^(alpha3(1)-1) .* X2.^(alpha3(2)-1) .* X3.^(alpha3(3)-1));
+ %F4 = (X1.^(alpha4(1)-1) .* X2.^(alpha4(2)-1) .* X3.^(alpha4(3)-1));
+
+ G = (beta(1).^alpha(1)) .*(beta(2).^alpha(2)) .*(beta(3).^alpha(3));
+ G1 = (beta1(1).^alpha1(1)) .*(beta1(2).^alpha1(2)) .*(beta1(3).^alpha1(3));
+ G2 = (beta2(1).^alpha2(1)) .*(beta2(2).^alpha2(2)) .*(beta2(3).^alpha2(3));
+ G3 = (beta3(1).^alpha3(1)) .*(beta3(2).^alpha3(2)) .*(beta3(3).^alpha3(3));
+ %G4 = (beta4(1).^alpha4(1)) .*(beta4(2).^alpha4(2)) .*(beta4(3).^alpha4(3));
+
+ H = ((beta(1).*X1)+(beta(2).*X2)+(beta(3).*X3)).^sum(alpha);
+ H1 = ((beta1(1).*X1)+(beta1(2).*X2)+(beta1(3).*X3)).^sum(alpha1);
+ H2 = ((beta2(1).*X1)+(beta2(2).*X2)+(beta2(3).*X3)).^sum(alpha2);
+ H3 = ((beta3(1).*X1)+(beta3(2).*X2)+(beta3(3).*X3)).^sum(alpha3);
+% H4 = ((beta4(1).*X1)+(beta4(2).*X2)+(beta4(3).*X3)).^sum(alpha4);
+
+ K = ((F.*G)./H)/betaConst;
+ K1 = ((F1.*G1)./H1)/betaConst1;
+ K2 = ((F2.*G2)./H2)/betaConst2;
+ K3 = ((F3.*G3)./H3)/betaConst3;
+ %K4 = ((F4.*G4)./H4)/betaConst4;
+
+
+ P = (.165*K) +(.33*K1) +(.33*K2)+(.165*K3);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+
+edeghonghon.okokhere@accessbankplc.com
+
+
+
+
+
+
+Synthetic 3
+
+ alpha = [65 15 30];
+ alpha1 = [30 34 35];
+ alpha2 = [15 65 30];
+ beta = [1 1 1];
+ beta1 = [1 1 1];
+ beta2 = [1 1 1];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ betaConst2 = exp(sum(gammaln(alpha2))-gammaln(sum(alpha2)));
+
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1));
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1));
+ F2 = (X1.^(alpha2(1)-1) .* X2.^(alpha2(2)-1) .* X3.^(alpha2(3)-1));
+
+ G = (beta(1).^alpha(1)) .*(beta(2).^alpha(2)) .*(beta(3).^alpha(3));
+ G1 = (beta1(1).^alpha1(1)) .*(beta1(2).^alpha1(2)) .*(beta1(3).^alpha1(3));
+ G2 = (beta2(1).^alpha2(1)) .*(beta2(2).^alpha2(2)) .*(beta2(3).^alpha2(3));
+
+ H = ((beta(1).*X1)+(beta(2).*X2)+(beta(3).*X3)).^sum(alpha);
+ H1 = ((beta1(1).*X1)+(beta1(2).*X2)+(beta1(3).*X3)).^sum(alpha1);
+ H2 = ((beta2(1).*X1)+(beta2(2).*X2)+(beta2(3).*X3)).^sum(alpha2);
+
+ K = ((F.*G)./H)/betaConst;
+ K1 = ((F1.*G1)./H1)/betaConst1;
+ K2 = ((F2.*G2)./H2)/betaConst2;
+ P = (.33*K) +(.33*K1) +(.33*K2);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+
+
+Synthetic 2
+ alpha = [65 15 30];
+ alpha1 = [15 65 30];
+ %alpha2 = [30 34 35];
+ 
+ beta = [1 1 1];
+ beta1 = [1 1 1];
+ %beta2 = [1 1 1];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ %betaConst2 = exp(sum(gammaln(alpha2))-gammaln(sum(alpha2)));
+
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1));
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1));
+ %F2 = (X1.^(alpha2(1)-1) .* X2.^(alpha2(2)-1) .* X3.^(alpha2(3)-1));
+
+ G = (beta(1).^alpha(1)) .*(beta(2).^alpha(2)) .*(beta(3).^alpha(3));
+ G1 = (beta1(1).^alpha1(1)) .*(beta1(2).^alpha1(2)) .*(beta1(3).^alpha1(3));
+ %G2 = (beta2(1).^alpha2(1)) .*(beta2(2).^alpha2(2)) .*(beta2(3).^alpha2(3));
+
+ H = ((beta(1).*X1)+(beta(2).*X2)+(beta(3).*X3)).^sum(alpha);
+ H1 = ((beta1(1).*X1)+(beta1(2).*X2)+(beta1(3).*X3)).^sum(alpha1);
+ %H2 = ((beta2(1).*X1)+(beta2(2).*X2)+(beta2(3).*X3)).^sum(alpha2);
+
+ K = ((F.*G)./H)/betaConst;
+ K1 = ((F1.*G1)./H1)/betaConst1;
+ %K2 = ((F2.*G2)./H2)/betaConst2;
+ P = (.5*K) +(.5*K1);
+ %P = (.33*K) +(.33*K1) +(.33*K2);
+
+ figure, surf(X1,X2,P,'EdgeColor','none');
+
+
+
+
+
+
+
+2D plots Dirichlet
+X = .001:.01:1;
+XX = .001:.01:1;
+% x1 = linspace(0,1,101);
+% x2 = linspace(0,1,101);
+ [x, y] = meshgrid(.001:.01:1,.001:.01:1);
+data = [X',1-X'];
+X1 = 1-X;
+Y1 = computepdf([3,23],[1,1],data);
+Y2 = computepdf([46,105],[1,1],data);
+Y3 = computepdf([2,3],[1,1],data);
+YY1 = exp(Y1);
+YY2 = exp(Y2);
+YY3 = exp(Y3);
+P = (.33*YY1)+(.33*YY2)+(.33*YY3);
+figure;
+plot(X,P);
+
+
+Synthetic 1A
+>> X = .001:.001:1;
+XX = .001:.001:1;
+data = [X',1-X'];
+X1 = 1-X;
+Y1 = exp(computepdf([2,10],[1,1],data));
+Y2 = exp(computepdf([20,20],[1,1],data));
+Y3 = exp(computepdf([10,2],[1,1],data));
+Ye1 = exp(computepdf([2.03,10.63],[1,1],data));
+Ye2 = exp(computepdf([18.7,18.5],[1,1],data));
+Ye3 = exp(computepdf([10.4,2.07],[1,1],data));
+figure;
+plot(X,Y1,'r',X,Ye1,'r:',X,Y2,'b',X,Ye2,'b:',X,Y3,'g',X,Ye3,'g:');
+
+
+Synthetic 1B
+>> X = .001:.001:1;
+XX = .001:.001:1;
+data = [X',1-X'];
+X1 = 1-X;
+Y1 = exp(computepdf([2,10],[1,1],data));
+Y2 = exp(computepdf([20,20],[1,1],data));
+Y3 = exp(computepdf([10,2],[1,1],data));
+Ye1 = exp(computepdf([2.03,10.63],[1,1],data));
+Ye2 = exp(computepdf([18.7,18.5],[1,1],data));
+Ye3 = exp(computepdf([10.4,2.07],[1,1],data));
+P = (.33*Y1)+(.33*Y2)+(.33*Y3);
+Pe = (.33*Ye1)+(.33*Ye2)+(.33*Ye3);
+figure;
+plot(X,P,'b',X,Pe,'b:');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>  alpha = [2 3 4];
+ alpha1 = [2 2 10];
+ x1 = linspace(0,1,101);
+ x2 = linspace(0,1,101);
+ [X1,X2] = ndgrid(x1,x2);
+ X3 = 1 - X1 - X2;
+ bad = (X1+X2 > 1); X1(bad) = NaN; X2(bad) = NaN; X3(bad) = NaN;
+
+ betaConst = exp(sum(gammaln(alpha))-gammaln(sum(alpha)));
+ betaConst1 = exp(sum(gammaln(alpha1))-gammaln(sum(alpha1)));
+ F = (X1.^(alpha(1)-1) .* X2.^(alpha(2)-1) .* X3.^(alpha(3)-1))/...
+ betaConst;
+ F1 = (X1.^(alpha1(1)-1) .* X2.^(alpha1(2)-1) .* X3.^(alpha1(3)-1))/...
+ betaConst1;
+
+ figure, 
+h(1) = surf(X1,X2,F,'EdgeColor','none');
+hold on
+ figure, 
+h(2) = surf(X1,X2,F1,'EdgeColor','none');
+hold off
+
+ xlabel('x1'); ylabel('x2'); zlabel('f(x1,x2,1-x1-x2)');
+ view(-160,40);
+
+ figure, surf(X1,X2,X3,P,'EdgeColor','none');
+ xlabel('x1'); ylabel('x2'); zlabel('x3');
+ view(-160,40);
